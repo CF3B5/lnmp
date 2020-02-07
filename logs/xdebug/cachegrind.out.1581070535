@@ -1,0 +1,23 @@
+version: 1
+creator: xdebug 2.6.0 (PHP 7.2.1-1ubuntu2)
+cmd: /var/www/html/index.php
+part: 1
+positions: line
+
+events: Time Memory
+
+fl=(1) php:internal
+fn=(1) php::phpinfo
+2 5240 90224
+
+fl=(2) /var/www/html/index.php
+fn=(2) {main}
+
+summary: 6108 90224
+
+1 867 0
+cfl=(1)
+cfn=(1)
+calls=1 0 0
+2 5240 90224
+

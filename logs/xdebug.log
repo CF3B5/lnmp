@@ -1,0 +1,6 @@
+Log opened at 2020-02-07 10:15:35
+I: Connecting to configured address/port: docker.for.mac.localhost:9000.
+W: Creating socket for 'docker.for.mac.localhost:9000', poll success, but error: Operation now in progress (29).
+E: Could not connect to client. :-(
+Log closed at 2020-02-07 10:15:35
+
