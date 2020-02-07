@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "30080:80"
+      - "30022:22"
+    volumes:
+      - "./html:/var/www/html"
+      - "./conf/php:/etc/php/7.2/fpm:ro"
+      - "./conf/nginx:/etc/nginx:ro"
+      - "./conf/mysql:/etc/mysql:ro"
+      - "./logs:/var/log/nginx"
+      - "./mysql:/var/lib/mysql"
+      - "./logs/mysql:/var/log/mysql"
