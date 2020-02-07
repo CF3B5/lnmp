@@ -1,56 +1,8 @@
 # lnmp
 使用Docker一键生成LNMP开发环境
+
 ## 介绍
 该镜像基于ubuntu官方的18.04的LTS镜像，包含nginx，php 7.2，mysql 5.7，memcached等服务，并配置好了php的xdebug服务，可以进行php的远程debug和profiler等操作
-
-## 默认的用户和密码
-
-```
-#ubuntu
-test:123 #先用这个登陆进系统，在su到root
-root:123
- 
-#mysql端口没有开放，请使用ssh隧道模式连接
-root:123
-```
-
-## 默认端口
-
-默认只开放了30080（html）和30022（ssh）两个端口，要使用mysql客户端管理等功能，请使用ssh隧道模式连接使用，如果需要更改端口，请自行修改docker-compose.yml中的配置
-
-```
-ports: #左边为本地端口，右边为docker镜像内端口
-- "30080:80" #web端口
-- "30022:22" #ssh端口
-```
-
-# lnmp文件夹结构介绍
-
-```
-#配置
-/conf/php #php配置文件夹
-/conf/mysql #mysql配置文件夹
-/conf/nginx #nginx配置文件夹
- 
-#mysql
-/mysql #mysql的数据文件
- 
-#www主目录
-/html
- 
-#日志
-/logs/access.log #nginx访问日志
-/logs/error.log #nginx错误日志
-/mysql/error.log #mysql错误日志
-/xdebug #xdebug #profiler文件日志
-/xdebug.log #xdebug日志
- 
-#docker dockerfile
-/Dockerfile
- 
-#docker-compose
-/docker-compose.yml
-```
 
 ## 启动和停止镜像
 进入文件夹，输入docker compose的启动命令即可，自动完成镜像下载和加载等动作！（更多详情请自行查看docker 的docker compose文档）
@@ -88,4 +40,53 @@ http://localhost:30080/phpinfo.php?XDEBUG_PROFILE=1
 生成完文件后，使用phpstrom的Profiler分析工具（菜单位置：Tools->Analyze Xdebug Profiler Snapshot）
 
 选择/logs/xdebug/中刚刚生成的日志文件，就可以分析对应的程序中每一个函数和语句的执行性能和时间情况了
+
+## 默认的用户和密码
+
+```
+#ubuntu
+test:123 #先用这个登陆进系统，在su到root
+root:123
+ 
+#mysql端口没有开放，请使用ssh隧道模式连接
+root:123
+```
+
+## 默认端口
+
+默认只开放了30080（html）和30022（ssh）两个端口，要使用mysql客户端管理等功能，请使用ssh隧道模式连接使用，如果需要更改端口，请自行修改docker-compose.yml中的配置
+
+```
+ports: #左边为本地端口，右边为docker镜像内端口
+- "30080:80" #web端口
+- "30022:22" #ssh端口
+```
+
+# 文件夹结构
+
+```
+#配置
+/conf/php #php配置文件夹
+/conf/mysql #mysql配置文件夹
+/conf/nginx #nginx配置文件夹
+ 
+#mysql
+/mysql #mysql的数据文件
+ 
+#www主目录
+/html
+ 
+#日志
+/logs/access.log #nginx访问日志
+/logs/error.log #nginx错误日志
+/mysql/error.log #mysql错误日志
+/xdebug #xdebug #profiler文件日志
+/xdebug.log #xdebug日志
+ 
+#docker dockerfile
+/Dockerfile
+ 
+#docker-compose
+/docker-compose.yml
+```
 
